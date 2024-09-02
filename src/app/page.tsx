@@ -11,12 +11,12 @@ export default function Home() {
   const [totalPrice, setTotalPrice] = React.useState(0);
 
 
-  const handleIncremental = (price) => {
+  const handleIncremental = (price: number) => {
     setTotal(total + 1);
     setTotalPrice(totalPrice + price);
   };
 
-  const handleDecremental = (price) => {
+  const handleDecremental = (price: number) => {
     if (total > 0) {
       setTotal(total - 1);
       setTotalPrice(totalPrice > 0 ? totalPrice - price : 0);
