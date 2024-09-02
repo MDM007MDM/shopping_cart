@@ -43,13 +43,15 @@ export default function ItemCart({
 
   return (
     <Grid container spacing={2} alignItems="center">
-      <Grid size={{xs:4, md:2}}>
-        <img src={imageUrl} alt={itemname} style={{ width: "300px", height: "300px", borderRadius: "300px" }} />
+      <Grid size={{xs:12 , md:4}} spacing={2}>
+        <img src={imageUrl} alt={itemname} style={{ width: "100px", height: "auto", borderRadius: "100px" }} />
       </Grid>
-      <Grid size={{xs:10, md:12}}>
-        <Stack spacing={1}>
-          <Typography variant="h6">{itemname}</Typography>
-          <Stack direction="row" alignItems="center" spacing={2}>
+      <Grid size={{xs:8 , md:8}} spacing={2}>
+        <Stack spacing={1} alignItems="center">
+          <Typography variant="h6" align="center">
+            {itemname}
+          </Typography>
+          <Stack direction="row" alignItems="center" spacing={1}>
             <IconButton onClick={handleRemoveItemClick}>
               <RemoveIcon />
             </IconButton>

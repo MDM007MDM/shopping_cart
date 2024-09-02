@@ -1,6 +1,6 @@
 "use client";
 
-import { IconButton, Button, Stack, Typography } from "@mui/material";
+import { IconButton, Button, Stack, Typography, Container, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import React from "react";
@@ -37,27 +37,29 @@ export default function Home() {
     { itemname: "Mac Studio", price: 74900 , imageUrl : "https://media-cdn.bnn.in.th/305342/Mac_Studio_M2_1-square_medium.jpg" },
   ];
   return (
-    <div>
-      <h1>Shopping Cart</h1>
-      {myItems &&
-        myItems.map((item) => (
-          <ItemCart
-            key={item.itemname}
-            itemname={item.itemname}
-            itemPrice={item.price}
-            imageUrl={item.imageUrl}
-            handleIncremantal={() => handleIncremental(item.price)}
-            handleDecremental={() => handleDecremental(item.price)}
-          />
+    <Container>
+      <Typography variant="h3" gutterBottom align="center">Shopping Cart</Typography>
+      <Grid container spacing={3}>
+        {myItems.map((item) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={item.itemname}>
+            <ItemCart
+              itemname={item.itemname}
+              itemPrice={item.price}
+              imageUrl={item.imageUrl}
+              handleIncremantal={() => handleIncremental(item.price)}
+              handleDecremental={() => handleDecremental(item.price)}
+            />
+          </Grid>
         ))}
-      <Stack direction="row" spacing={2}>
-        <Typography variant="h4">Total Items: </Typography>
-        <Typography variant="h4">{total}</Typography>
+      </Grid>
+      <Stack direction="row" spacing={2} justifyContent="center" mt={4}>
+        <Typography variant="h5">Total Items: </Typography>
+        <Typography variant="h5">{total}</Typography>
       </Stack>
-      <Stack direction="row" spacing={2}>
-        <Typography variant="h4">Total Price: </Typography>
-        <Typography variant="h4">{totalPrice.toLocaleString()} THB</Typography>
+      <Stack direction="row" spacing={2} justifyContent="center" mt={1}>
+        <Typography variant="h5">Total Price: </Typography>
+        <Typography variant="h5">{totalPrice.toLocaleString()} THB</Typography>
       </Stack>
-    </div>
+    </Container>
   );
 }
